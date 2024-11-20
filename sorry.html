@@ -1,0 +1,224 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sorry Maitry</title>
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            background-color: #f7f7f7;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            overflow: hidden;
+        }
+
+        .sorry-card {
+            background: #fff;
+            border-radius: 15px;
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+            padding: 30px;
+            text-align: center;
+            width: 90%;
+            max-width: 800px;
+        }
+
+        .heart {
+            font-size: 80px;
+            color: #e74c3c;
+            margin-bottom: 20px;
+        }
+
+        h1 {
+            font-size: 36px;
+            color: #2c3e50;
+            margin-bottom: 20px;
+        }
+
+        p {
+            font-size: 18px;
+            color: #7f8c8d;
+            line-height: 1.6;
+            margin-bottom: 30px;
+        }
+
+        .btn-sorry {
+            background-color: #e74c3c;
+            color: #fff;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 25px;
+            font-size: 18px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+
+        .btn-sorry:hover {
+            background-color: #c0392b;
+        }
+
+        .footer {
+            text-align: center;
+            margin-top: 30px;
+            color: #7f8c8d;
+        }
+
+        .image-grid img,
+        .kiss-image img,
+        .sad-image img {
+            width: 100%;
+            height: auto;
+            object-fit: cover;
+            border-radius: 15px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+        }
+
+        .image-grid .col-md-6 {
+            margin-bottom: 15px;
+        }
+
+        .arrow {
+            font-size: 50px;
+            color: #3498db;
+            animation: bounce 1s infinite;
+            cursor: pointer;
+            margin-top: 30px;
+        }
+
+        @keyframes bounce {
+            0%,
+            100% {
+                transform: translateY(0);
+            }
+
+            50% {
+                transform: translateY(-15px);
+            }
+        }
+
+        .question-container {
+            display: none;
+            margin-top: 30px;
+        }
+
+        .question-container button {
+            margin: 10px;
+        }
+
+        .happy-message {
+            font-size: 24px;
+            color: #27ae60;
+            margin-top: 20px;
+        }
+
+        .sad-message {
+            font-size: 24px;
+            color: #e74c3c;
+            margin-top: 20px;
+        }
+
+        .kiss-image,
+        .sad-image {
+            margin-top: 20px;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="sorry-card">
+        <div class="heart">💔</div>
+        <h1>I'm So Sorry, Maitry</h1>
+        <p>
+            I am truly sorry for being distracted while we were on the call. I know I should have been more attentive and
+            given you the time and energy you deserve. I've been working really hard lately because I want my field job so
+            badly, but that doesn't mean I should ever compromise on our relationship. You are incredibly important to me,
+            and I will be more careful moving forward. I promise I will give you the attention you deserve and never let
+            work come in between us again. I will always make time for you.
+        </p>
+
+        <!-- Image Grid -->
+        <div class="row image-grid">
+            <div class="col-md-6 col-sm-12 mb-3">
+                <img src="m.jpg" alt="Your Girlfriend's Image" class="img-fluid rounded">
+            </div>
+            <div class="col-md-6 col-sm-12 mb-3">
+                <img src="sorry.jpeg" alt="Meaningful Image" class="img-fluid rounded">
+            </div>
+        </div>
+
+        <!-- Arrow to Forgive Me Button -->
+        <div class="arrow" id="arrow">&#8595;</div>
+
+        <!-- Forgive Me Button -->
+        <button class="btn-sorry" id="forgiveBtn">Forgive Me?</button>
+
+        <!-- Question Modal -->
+        <div class="question-container" id="questionContainer">
+            <p>Do you forgive me?</p>
+            <button class="btn btn-success" id="yesBtn">Yes</button>
+            <button class="btn btn-danger" id="noBtn">No</button>
+        </div>
+
+        <div class="footer">
+            <p>Made with ❤️ by Me</p>
+        </div>
+    </div>
+
+    <!-- Happy and Sad Messages -->
+    <div id="happyMessage" class="happy-message" style="display: none;">
+        I'm so glad you forgive me! ❤️
+    </div>
+    <div id="sadMessage" class="sad-message" style="display: none;">
+        I'm really sorry... 😢
+    </div>
+
+    <!-- Images for Yes/No -->
+    <div id="kissImage" class="kiss-image" style="display: none;">
+        <img src="kiss.jpg" alt="Couple Kissing" class="img-fluid rounded">
+    </div>
+
+    <div id="sadImage" class="sad-image" style="display: none;">
+        <img src="sad.jpeg" alt="Sad Guy in Rain" class="img-fluid rounded">
+    </div>
+
+    <!-- Bootstrap JS and Popper.js -->
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.min.js"></script>
+
+    <script>
+        document.getElementById("forgiveBtn").onclick = function () {
+            document.getElementById("questionContainer").style.display = "block";
+        };
+
+        document.getElementById("yesBtn").onclick = function () {
+            document.getElementById("happyMessage").style.display = "block";
+            document.getElementById("kissImage").style.display = "block";
+            setTimeout(function () {
+                document.getElementById("happyMessage").style.display = "none";
+                document.getElementById("kissImage").style.display = "none";
+            }, 5000);
+            document.getElementById("questionContainer").style.display = "none";
+        };
+
+        document.getElementById("noBtn").onclick = function () {
+            document.getElementById("sadMessage").style.display = "block";
+            document.getElementById("sadImage").style.display = "block";
+            setTimeout(function () {
+                document.getElementById("sadMessage").style.display = "none";
+                document.getElementById("sadImage").style.display = "none";
+            }, 5000);
+            document.getElementById("questionContainer").style.display = "none";
+        };
+    </script>
+
+</body>
+
+</html>
