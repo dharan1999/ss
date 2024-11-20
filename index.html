@@ -12,11 +12,8 @@
         body {
             font-family: 'Arial', sans-serif;
             background-color: #f7f7f7;
-            display: flex;
-            justify-content: center;
             margin: 0;
-            padding: 20px;
-            overflow-y: auto; /* Allow scrolling */
+            padding: 0;
         }
 
         .sorry-card {
@@ -24,10 +21,9 @@
             border-radius: 15px;
             box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
             padding: 30px;
-            text-align: center;
-            width: 90%;
+            margin: 20px auto;
             max-width: 800px;
-            margin: auto;
+            text-align: center;
         }
 
         .heart {
@@ -70,58 +66,38 @@
             color: #7f8c8d;
         }
 
-        .image-grid img {
+        .image-container {
+            display: none;
+            margin-top: 20px;
+        }
+
+        .image-container img {
             width: 100%;
             height: auto;
             object-fit: cover;
             border-radius: 15px;
             box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            margin-top: 15px;
         }
 
-        .arrow {
-            font-size: 50px;
-            color: #3498db;
-            animation: bounce 1s infinite;
-            cursor: pointer;
-            margin-top: 30px;
-        }
-
-        @keyframes bounce {
-            0%,
-            100% {
-                transform: translateY(0);
-            }
-
-            50% {
-                transform: translateY(-15px);
-            }
-        }
-
-        .question-container {
-            display: none;
-            margin-top: 30px;
+        .happy-message,
+        .sad-message {
+            font-size: 24px;
+            margin-top: 10px;
         }
 
         .happy-message {
-            font-size: 24px;
             color: #27ae60;
-            margin-top: 20px;
         }
 
         .sad-message {
-            font-size: 24px;
             color: #e74c3c;
-            margin-top: 20px;
-        }
-
-        .kiss-image,
-        .sad-image {
-            margin-top: 20px;
         }
     </style>
 </head>
 
 <body>
+
     <div class="sorry-card">
         <div class="heart">💔</div>
         <h1>I'm So Sorry, Maitry</h1>
@@ -135,48 +111,29 @@
 
         <!-- Image Grid -->
         <div class="row image-grid">
-            <div class="col-md-6 mb-3">
+            <div class="col-md-6 col-sm-12 mb-3">
                 <img src="m.jpg" alt="Your Girlfriend's Image" class="img-fluid rounded">
             </div>
-            <div class="col-md-6 mb-3">
+            <div class="col-md-6 col-sm-12 mb-3">
                 <img src="sorry.jpeg" alt="Meaningful Image" class="img-fluid rounded">
             </div>
         </div>
 
-        <!-- Arrow to Forgive Me Button -->
-        <div class="arrow" id="arrow">&#8595;</div>
-
         <!-- Forgive Me Button -->
         <button class="btn-sorry" id="forgiveBtn">Forgive Me?</button>
 
-        <!-- Question Modal -->
-        <div class="question-container" id="questionContainer">
-            <p>Do you forgive me?</p>
-            <button class="btn btn-success" id="yesBtn">Yes</button>
-            <button class="btn btn-danger" id="noBtn">No</button>
+        <!-- Dynamic Content Below Button -->
+        <div class="image-container" id="imageContainer">
+            <div id="happyMessage" class="happy-message">I'm so glad you forgive me! ❤️</div>
+            <img id="kissImage" src="kiss.jpg" alt="Couple Kissing" class="img-fluid rounded">
+
+            <div id="sadMessage" class="sad-message">I'm really sorry... 😢</div>
+            <img id="sadImage" src="sad.jpeg" alt="Sad Guy in Rain" class="img-fluid rounded">
         </div>
 
-        <!-- Footer -->
         <div class="footer">
-            <p>Made with ❤️ by Me</p>
+            <p>Made with ❤️ by Dharan</p>
         </div>
-    </div>
-
-    <!-- Happy and Sad Messages -->
-    <div id="happyMessage" class="happy-message" style="display: none;">
-        I'm so glad you forgive me! ❤️
-    </div>
-    <div id="sadMessage" class="sad-message" style="display: none;">
-        I'm really sorry... 😢
-    </div>
-
-    <!-- Images for Yes/No -->
-    <div id="kissImage" class="kiss-image" style="display: none;">
-        <img src="kiss.jpg" alt="Couple Kissing" class="img-fluid rounded">
-    </div>
-
-    <div id="sadImage" class="sad-image" style="display: none;">
-        <img src="sad.jpeg" alt="Sad Guy in Rain" class="img-fluid rounded">
     </div>
 
     <!-- Bootstrap JS and Popper.js -->
@@ -184,30 +141,31 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.min.js"></script>
 
     <script>
-        document.getElementById("forgiveBtn").onclick = function () {
-            document.getElementById("questionContainer").style.display = "block";
-        };
+        const forgiveBtn = document.getElementById("forgiveBtn");
+        const imageContainer = document.getElementById("imageContainer");
+        const happyMessage = document.getElementById("happyMessage");
+        const sadMessage = document.getElementById("sadMessage");
+        const kissImage = document.getElementById("kissImage");
+        const sadImage = document.getElementById("sadImage");
 
-        document.getElementById("yesBtn").onclick = function () {
-            document.getElementById("happyMessage").style.display = "block";
-            document.getElementById("kissImage").style.display = "block";
-            setTimeout(function () {
-                document.getElementById("happyMessage").style.display = "none";
-                document.getElementById("kissImage").style.display = "none";
-            }, 5000);
-            document.getElementById("questionContainer").style.display = "none";
-        };
+        forgiveBtn.onclick = function () {
+            imageContainer.style.display = "block";
+            happyMessage.style.display = "none";
+            sadMessage.style.display = "none";
+            kissImage.style.display = "none";
+            sadImage.style.display = "none";
 
-        document.getElementById("noBtn").onclick = function () {
-            document.getElementById("sadMessage").style.display = "block";
-            document.getElementById("sadImage").style.display = "block";
-            setTimeout(function () {
-                document.getElementById("sadMessage").style.display = "none";
-                document.getElementById("sadImage").style.display = "none";
-            }, 5000);
-            document.getElementById("questionContainer").style.display = "none";
+            const userResponse = confirm("Do you forgive me?");
+            if (userResponse) {
+                happyMessage.style.display = "block";
+                kissImage.style.display = "block";
+            } else {
+                sadMessage.style.display = "block";
+                sadImage.style.display = "block";
+            }
         };
     </script>
+
 </body>
 
 </html>
