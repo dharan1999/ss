@@ -14,10 +14,9 @@
             background-color: #f7f7f7;
             display: flex;
             justify-content: center;
-            align-items: center;
-            height: 100vh;
             margin: 0;
-            overflow: hidden;
+            padding: 20px;
+            overflow-y: auto; /* Allow scrolling */
         }
 
         .sorry-card {
@@ -28,6 +27,7 @@
             text-align: center;
             width: 90%;
             max-width: 800px;
+            margin: auto;
         }
 
         .heart {
@@ -70,18 +70,12 @@
             color: #7f8c8d;
         }
 
-        .image-grid img,
-        .kiss-image img,
-        .sad-image img {
+        .image-grid img {
             width: 100%;
             height: auto;
             object-fit: cover;
             border-radius: 15px;
             box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
-        }
-
-        .image-grid .col-md-6 {
-            margin-bottom: 15px;
         }
 
         .arrow {
@@ -108,10 +102,6 @@
             margin-top: 30px;
         }
 
-        .question-container button {
-            margin: 10px;
-        }
-
         .happy-message {
             font-size: 24px;
             color: #27ae60;
@@ -132,7 +122,6 @@
 </head>
 
 <body>
-
     <div class="sorry-card">
         <div class="heart">💔</div>
         <h1>I'm So Sorry, Maitry</h1>
@@ -146,10 +135,10 @@
 
         <!-- Image Grid -->
         <div class="row image-grid">
-            <div class="col-md-6 col-sm-12 mb-3">
+            <div class="col-md-6 mb-3">
                 <img src="m.jpg" alt="Your Girlfriend's Image" class="img-fluid rounded">
             </div>
-            <div class="col-md-6 col-sm-12 mb-3">
+            <div class="col-md-6 mb-3">
                 <img src="sorry.jpeg" alt="Meaningful Image" class="img-fluid rounded">
             </div>
         </div>
@@ -167,6 +156,7 @@
             <button class="btn btn-danger" id="noBtn">No</button>
         </div>
 
+        <!-- Footer -->
         <div class="footer">
             <p>Made with ❤️ by Me</p>
         </div>
@@ -218,7 +208,6 @@
             document.getElementById("questionContainer").style.display = "none";
         };
     </script>
-
 </body>
 
 </html>
